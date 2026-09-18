@@ -10,6 +10,7 @@ const resultCount = document.querySelector("#result-count");
 const search = document.querySelector("#search");
 const categoryFilter = document.querySelector("#category-filter");
 const loadoutFilter = document.querySelector("#loadout-filter");
+const viewFilter = document.querySelector("#view-filter");
 const presetFilter = document.querySelector("#preset-filter");
 const dialog = document.querySelector("#clip-dialog");
 const dialogContent = document.querySelector("#dialog-content");
@@ -58,12 +59,14 @@ function applyFilters() {
   const query = search.value.trim().toLowerCase();
   const category = categoryFilter.value;
   const loadout = loadoutFilter.value;
+  const view = viewFilter.value;
   const preset = presetFilter.value;
 
   state.filtered = state.clips.filter(clip => {
     if (query && !searchText(clip).includes(query)) return false;
     if (category && clip.category !== category) return false;
     if (loadout && clip.loadout_profile !== loadout) return false;
+    if (view && clip.view !== view) return false;
     if (preset && clip.capture_preset !== preset) return false;
     return true;
   });
@@ -221,6 +224,7 @@ async function loadCatalog() {
 
     populateFilter(categoryFilter, uniqueValues("category"));
     populateFilter(loadoutFilter, uniqueValues("loadout_profile"));
+    populateFilter(viewFilter, uniqueValues("view"));
     populateFilter(
       presetFilter,
       uniqueValues("capture_preset"),
@@ -241,7 +245,7 @@ async function loadCatalog() {
   }
 }
 
-for (const control of [search, categoryFilter, loadoutFilter, presetFilter]) {
+for (const control of [search, categoryFilter, loadoutFilter, viewFilter, presetFilter]) {
   control.addEventListener("input", applyFilters);
   control.addEventListener("change", applyFilters);
 }
