@@ -51,6 +51,9 @@ function searchText(clip) {
     clip.action,
     clip.view,
     clip.loadout_profile,
+    clip.variant_group,
+    clip.variation,
+    clip.sport,
     ...(clip.tags || [])
   ].join(" ").toLowerCase();
 }
@@ -111,6 +114,8 @@ function openClip(clip) {
     chip(presetLabels[clip.capture_preset] || humanize(clip.capture_preset)),
     chip(humanize(clip.view))
   );
+  if (clip.sport) details.append(chip(humanize(clip.sport)));
+  if (clip.variation !== undefined) details.append(chip("Variant " + clip.variation));
 
   const download = document.createElement("a");
   download.className = "button primary";
@@ -173,8 +178,11 @@ function makeCard(clip) {
   meta.append(
     chip(humanize(clip.category)),
     chip(humanize(clip.loadout_profile)),
-    chip(presetLabels[clip.capture_preset] || humanize(clip.capture_preset))
+    chip(presetLabels[clip.capture_preset] || humanize(clip.capture_preset)),
+    chip(humanize(clip.view))
   );
+  if (clip.sport) meta.append(chip(humanize(clip.sport)));
+  if (clip.variation !== undefined) meta.append(chip("Variant " + clip.variation));
 
   const actions = document.createElement("div");
   actions.className = "card-actions";
