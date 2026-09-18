@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A searchable archive of standardized orthographic motion reference clips.">
+  <title>Ortho Motion Archive</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">OM</div>
+      <div>
+        <h1>Ortho Motion Archive</h1>
+        <p>Standardized orthographic motion clips.</p>
+      </div>
+    </div>
+    <a class="repo-link" href="https://github.com/belegradesstudio/ortho_motion_reference_archive">GitHub</a>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="eyebrow">OMR Capture Spec v1</p>
+      <h2 id="intro-title">One capture standard. Many movements.</h2>
+      <p class="lede">
+        Consistent avatar scale, root-locked positioning, floor alignment, and orthographic presentation.
+        Browse, preview, and download individual motion clips without changing reference geometry.
+      </p>
+      <div class="spec-pills" aria-label="Capture presets">
+        <span>512x512</span>
+        <span>1024x512</span>
+        <span>1024x1024</span>
+      </div>
+    </section>
+
+    <section class="browser" aria-labelledby="browser-title">
+      <div class="browser-heading">
+        <div>
+          <p class="eyebrow">Archive</p>
+          <h2 id="browser-title">Browse clips</h2>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+      </div>
+
+      <div class="controls">
+        <label class="search-wrap">
+          <span class="sr-only">Search motion clips</span>
+          <input id="search" type="search" placeholder="Search movements, tags, loadouts..." autocomplete="off">
+        </label>
+
+        <label>
+          <span>Category</span>
+          <select id="category-filter"><option value="">All categories</option></select>
+        </label>
+
+        <label>
+          <span>Loadout</span>
+          <select id="loadout-filter"><option value="">All loadouts</option></select>
+        </label>
+
+        <label>
+          <span>Frame</span>
+          <select id="preset-filter"><option value="">All frames</option></select>
+        </label>
+      </div>
+
+      <div id="clip-grid" class="clip-grid"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <strong>No clips match these filters.</strong>
+        <span>Try a broader search or clear one of the filters.</span>
+      </div>
+
+      <div id="loading-state" class="empty-state">
+        <strong>Loading archive...</strong>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="clip-dialog" class="clip-dialog">
+    <button id="dialog-close" class="dialog-close" type="button" aria-label="Close preview">&times;</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <footer>
+    <span>Ortho Motion Archive</span>
+    <span>Capture spec OMR-1</span>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

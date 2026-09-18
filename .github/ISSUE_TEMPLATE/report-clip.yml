@@ -1,0 +1,42 @@
+name: Report a clip or catalog issue
+description: Report ownership/provenance concerns, incorrect metadata, broken playback/downloads, or inappropriate content.
+title: "[Clip report] "
+labels: ["clip-report"]
+body:
+  - type: input
+    id: clip
+    attributes:
+      label: Clip ID or title
+      description: Provide the archive clip ID or title if known.
+      placeholder: locomotion_walk_forward_001
+    validations:
+      required: false
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue type
+      options:
+        - Ownership or provenance concern
+        - Incorrect metadata
+        - Playback or download problem
+        - Inappropriate or rule-breaking content
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Explain the issue clearly. Include relevant links or evidence when appropriate.
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Supporting source or link
+      description: Optional. Provide a source that helps verify the report.
+    validations:
+      required: false
