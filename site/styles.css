@@ -155,7 +155,7 @@ h1 {
 
 .controls {
   display: grid;
-  grid-template-columns: minmax(240px, 2fr) repeat(3, minmax(130px, 1fr));
+  grid-template-columns: minmax(240px, 2fr) repeat(4, minmax(120px, 1fr));
   gap: 10px;
   margin-bottom: 24px;
 }
