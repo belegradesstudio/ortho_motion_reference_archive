@@ -12,6 +12,7 @@ A clip record is designed to describe **what motion is shown**, **how it was cap
   "title": "Forward Walk",
   "category": "locomotion",
   "action": "walk_forward",
+  "variant_group": "walk_forward",
   "tags": ["walk", "forward", "locomotion"],
   "view": "side",
   "capture_preset": "square_512",
@@ -48,6 +49,9 @@ Useful optional fields include:
 - `source_name`
 - `source_reference`
 - `notes`
+- `variant_group` — groups front/side and alternate takes of the same action
+- `variation` — numbered or named take within a view
+- `sport` — domain-specific grouping such as `soccer`
 - `duration_seconds`
 - `fps`
 - `hand`
